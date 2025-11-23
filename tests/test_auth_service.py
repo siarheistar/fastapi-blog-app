@@ -1,3 +1,5 @@
+from typing import Optional, Dict
+
 from app.domain.entities import User, Session
 from app.domain.interfaces import UserRepository, SessionRepository
 from app.use_cases.auth_service import AuthService
@@ -5,13 +7,13 @@ from app.use_cases.auth_service import AuthService
 
 class InMemoryUserRepo(UserRepository):
     def __init__(self) -> None:
-        self.users: dict[str, User] = {}
+        self.users: Dict[str, User] = {}
         self._id_counter = 1
 
-    def get_by_username(self, username: str) -> User | None:
+    def get_by_username(self, username: str) -> Optional[User]:
         return self.users.get(username)
 
-    def get_by_id(self, user_id: int) -> User | None:
+    def get_by_id(self, user_id: int) -> Optional[User]:
         for user in self.users.values():
             if user.id == user_id:
                 return user
@@ -26,13 +28,13 @@ class InMemoryUserRepo(UserRepository):
 
 class InMemorySessionRepo(SessionRepository):
     def __init__(self) -> None:
-        self.sessions: dict[str, Session] = {}
+        self.sessions: Dict[str, Session] = {}
 
     def add(self, session: Session) -> Session:
         self.sessions[session.id] = session
         return session
 
-    def get(self, session_id: str) -> Session | None:
+    def get(self, session_id: str) -> Optional[Session]:
         return self.sessions.get(session_id)
 
     def delete(self, session_id: str) -> None:
