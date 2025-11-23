@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Blog{% endblock %}
+
+{% block content %}
+<h2>Recent Posts</h2>
+<ul>
+    {% for post in posts %}
+        <li>
+            <a href="/posts/{{ post.id }}">{{ post.title }}</a>
+            <small>By user #{{ post.author_id }} on {{ post.created_at.strftime('%B %d, %Y') if post.created_at else 'Unknown date' }}</small>
+            {% if post.image_path %}
+                <div>
+                    <img src="/static/uploads/{{ post.image_path }}" alt="{{ post.title }}" />
+                </div>
+            {% endif %}
+        </li>
+    {% else %}
+        <li style="text-align: center; color: #888;">
+            <p>No posts yet. Be the first to create one!</p>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

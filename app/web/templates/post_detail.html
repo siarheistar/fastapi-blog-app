@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - My Blog{% endblock %}
+
+{% block content %}
+<article>
+    <h2>{{ post.title }}</h2>
+    <p><small>By user #{{ post.author_id }} on {{ post.created_at.strftime('%B %d, %Y at %I:%M %p') if post.created_at else 'Unknown date' }}</small></p>
+    {% if post.image_path %}
+        <div>
+            <img src="/static/uploads/{{ post.image_path }}" alt="{{ post.title }}" />
+        </div>
+    {% endif %}
+    <div style="margin-top: 2rem;">
+        <p>{{ post.content }}</p>
+    </div>
+    <div style="margin-top: 2rem;">
+        <a href="/" style="color: #667eea; text-decoration: none; font-weight: 600;">← Back to all posts</a>
+    </div>
+</article>
+{% endblock %}
