@@ -58,6 +58,3 @@ app/web/static/uploads/*
 *.log
 *.tmp
 cookies.txt
-
-# CI/CD
-.github/

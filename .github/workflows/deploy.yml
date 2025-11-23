@@ -1,0 +1,37 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Package app
+        run: |
+          mkdir -p dist
+          tar -czf dist/app.tar.gz app requirements.txt
+
+      # TODO: Replace this step with deployment to your target platform.
+      # For example, upload artifact, push Docker image, or deploy to Azure/Render/etc.
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: blog-app
+          path: dist/app.tar.gz
