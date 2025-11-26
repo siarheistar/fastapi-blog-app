@@ -71,10 +71,26 @@ You should see the beautiful homepage with login/registration forms!
 
 ## Running Tests
 
+This project includes comprehensive test coverage (93%) with unit tests, API tests, and BDD tests.
+
+**Quick Start:**
 ```bash
 source .venv/bin/activate
 pytest
 ```
+
+**Or use the test runner:**
+```bash
+./run_tests.sh
+```
+
+**View coverage report:**
+```bash
+pytest --cov=app --cov-report=html
+open htmlcov/index.html
+```
+
+For detailed testing documentation, see [TESTING.md](TESTING.md)
 
 ## Project Structure
 
@@ -122,13 +138,16 @@ test_website/
   3. Railway auto-detects Python and deploys
   4. Add Procfile if needed: `web: uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 
-#### 3. **Fly.io** (Free tier available)
-- 3 shared-cpu VMs free
-- Requires Docker (but easy setup)
+#### 3. **Fly.io** (Free tier available) - RECOMMENDED
+- 3 shared-cpu VMs free with persistent storage
+- Native ASGI support (no adapter needed)
 - Steps:
-  1. Install flyctl CLI: `curl -L https://fly.io/install.sh | sh`
-  2. Run `fly launch` in project directory
-  3. Follow prompts to deploy
+  1. Install flyctl: `curl -L https://fly.io/install.sh | sh` (or `brew install flyctl` on Mac)
+  2. Login: `fly auth login`
+  3. Create volume: `fly volumes create app_data --size 1`
+  4. Deploy: `fly deploy`
+
+Your app is already configured with [fly.toml](fly.toml)
 
 #### 4. **PythonAnywhere** (Free tier available)
 - Free tier with limitations
