@@ -2,6 +2,10 @@
 
 A beautiful, modern blog web application with user authentication, post creation, and image uploads. Built with FastAPI, SQLite, and styled with a modern purple gradient theme.
 
+**📚 New to the project?** See the [Complete Setup Guide](SETUP_GUIDE.md) for step-by-step instructions on cloning, running, and testing the application.
+
+**🚀 Live Demo:** <https://fastapi-blog-app.fly.dev>
+
 ## Features
 
 - User registration and authentication with bcrypt password hashing
