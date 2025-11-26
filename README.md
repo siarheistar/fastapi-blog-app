@@ -4,6 +4,8 @@ A beautiful, modern blog web application with user authentication, post creation
 
 **📚 New to the project?** See the [Complete Setup Guide](SETUP_GUIDE.md) for step-by-step instructions on cloning, running, and testing the application.
 
+**🔗 Repository:** <https://github.com/siarheistar/fastapi-blog-app>
+
 **🚀 Live Demo:** <https://fastapi-blog-app.fly.dev>
 
 ## Features
@@ -28,8 +30,8 @@ A beautiful, modern blog web application with user authentication, post creation
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
-cd test_website
+git clone https://github.com/siarheistar/fastapi-blog-app.git
+cd fastapi-blog-app
 ```
 
 ### 2. Set up the virtual environment
